@@ -1,30 +1,23 @@
-import random
+from Tkinter import *
+import ttk
 
-fp = open("words.txt","r")
 
-i= random.randrange(0,10)
+class Hangman():
+    """docstring for Hangman"""
 
-hang = 7
+    def __init__(self, master):
+        self.label = ttk.Label(master, text="HANGMAN")
+        self.label.pack()
+        self.label.config(font=('Courier', 30, 'bold'))
+        self.label.config(foreground='blue', background='black')
+        self.label.config(image=PhotoImage(file='C:\\Users\\S K Sharma\\Desktop\\Project_Hangman\\python_logo.gif'))
 
-for x in range(i):
-	word = fp.readline()
 
-fp.close()
+def main():
+    root = Tk()
+    Hangman(root)
+    root.mainloop()
 
-word = list(word)
-w = word[:-1]
 
-print w
-
-for i in range(0,len(w)):
-	print "_ ",
-while hang > 0:
-	I = raw_input("Enter an alphabet ")
-	if I in w:
-		for t in w:
-			if t == I:
-				print I," ",
-			else:
-				print "_ ",
-	else:
-		hang = hang - 1
+if __name__ == '__main__':
+    main()
